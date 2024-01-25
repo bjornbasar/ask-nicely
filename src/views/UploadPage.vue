@@ -3,6 +3,9 @@
 <template>
   <div class="upload-container">
     <h2>Upload Page</h2>
+    <router-link to="/list">
+      <button class="back-button">Back to List</button>
+    </router-link>
     <div class="file-drop-container" @dragover.prevent @drop="handleDrop" @click="handleClick">
       <input
         type="file"
@@ -64,11 +67,23 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: auto auto 20px auto;
+}
+
 .upload-container {
-  max-width: 400px;
   margin: auto;
-  padding: 20px;
-  text-align: center;
 }
 
 .file-drop-container {

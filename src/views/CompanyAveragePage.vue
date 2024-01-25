@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <tr v-for="company in companyStats" :key="company.companyName">
-          <td>{{ company.companyName }}</td>
+          <td>{{ company.company }}</td>
           <td>{{ formatCurrency(company.averageSalary) }}</td>
         </tr>
       </tbody>
@@ -72,7 +72,6 @@ h2 {
 .company-stats-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
 }
 
 .company-stats-table th, .company-stats-table td {

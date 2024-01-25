@@ -4,10 +4,9 @@
     <router-link to="/upload">
       <button class="upload-button">Upload</button>
     </router-link>
-    <router-link to="/company-stats">
+    <router-link to="/company-average">
       <button class="company-stats-button">Company Statistics</button>
     </router-link>
-    <p>Average Salary: {{ calculateAverageSalary() }}</p>
     <table class="data-table">
       <thead>
         <tr>
@@ -22,7 +21,7 @@
           <td>{{ record.company }}</td>
           <td>{{ record.name }}</td>
           <td>{{ record.email }}</td>
-          <td>{{ record.salary }}</td>
+          <td>{{ formatCurrency(record.salary) }}</td>
         </tr>
       </tbody>
     </table>
@@ -57,14 +56,8 @@ export default {
     goToEditPage(recordId) {
       this.$router.push(`/edit/${recordId}`);
     },
-    calculateAverageSalary() {
-      if (this.dataList.length === 0) {
-        return 0;
-      }
-
-      const totalSalary = this.dataList.reduce((acc, record) => acc + record.salary, 0);
-      const averageSalary = totalSalary / this.dataList.length;
-      return averageSalary.toFixed(2); 
+    formatCurrency(value) {
+      return `$${value.toFixed(2)}`;
     },
   }
 };
