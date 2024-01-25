@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
         $csvData = array_map('str_getcsv', file($filePath));
         $headers = array_shift($csvData);
-        $expectedHeaders = ["Company Name", "Employee Name", "Employee Email", "Salary"];
+        $expectedHeaders = ["Company Name", "Employee Name", "Email Address", "Salary"];
 
         if ($headers === false || $headers !== $expectedHeaders) {
             http_response_code(400);
@@ -48,8 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
         echo json_encode(['message' => 'File uploaded and data inserted successfully']);
     } else {
+        http_response_code(400);
         echo json_encode(['error' => 'Error uploading file']);
     }
 } else {
+    http_response_code(400);
     echo json_encode(['error' => 'Invalid request']);
 }

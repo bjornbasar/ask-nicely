@@ -29,5 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         echo json_encode($records);
     }
 } else {
+    http_response_code(400);
     echo json_encode(['error' => 'Invalid request']);
 }

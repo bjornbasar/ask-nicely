@@ -10,9 +10,8 @@ $password = getenv('DB_PASSWORD');
 
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
 
-$data = json_decode(file_get_contents('php://input'));
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents('php://input'));
     if ($data) {
         if (isset($data->id, $data->email)) {
             $id = $data->id;
@@ -30,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         http_response_code(400);
         echo json_encode(["error" => "Invalid request. Please provide valid JSON data."]);
     }
-} else {
+} elseif ($_SERVER['REQUEST_METHOD'] !== 'OPTIONS'){
+    http_response_code(400);
     echo json_encode(['error' => 'Invalid request']);
 }
