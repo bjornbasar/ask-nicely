@@ -2,7 +2,7 @@
   <div>
     <h2>Data List</h2>
     <router-link to="/upload">
-      <button>Go to Upload Page</button>
+      <button class="upload-button">Go to Upload Page</button>
     </router-link>
     <table class="data-table">
       <thead>
