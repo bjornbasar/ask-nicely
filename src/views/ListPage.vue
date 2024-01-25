@@ -4,6 +4,9 @@
     <router-link to="/upload">
       <button class="upload-button">Upload</button>
     </router-link>
+    <router-link to="/company-stats">
+      <button class="company-stats-button">Company Statistics</button>
+    </router-link>
     <p>Average Salary: {{ calculateAverageSalary() }}</p>
     <table class="data-table">
       <thead>
@@ -73,7 +76,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-.upload-button {
+.upload-button, .company-stats-button {
   background-color: #4caf50;
   color: white;
   padding: 10px;

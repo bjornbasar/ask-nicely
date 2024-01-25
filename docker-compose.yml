@@ -2,6 +2,7 @@ version: '3'
 services:
   php:
     build: ./backend
+    #image: peopsquik/php:latest
     volumes:
       - ./backend:/var/www/html
     ports:
@@ -11,8 +12,6 @@ services:
     depends_on:
       - mysql
     command: php -S 0.0.0.0:80 -t /var/www/html
-    networks:
-      - backend-network
 
   mysql:
     image: mysql:latest
@@ -29,9 +28,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    #image: peopsquik/vue:latest
     ports:
       - 8081:80
-
-networks:
-  backend-network:
-    driver: bridge
