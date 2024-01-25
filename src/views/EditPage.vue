@@ -33,7 +33,7 @@ export default {
   },
   mounted() {
     const recordId = this.$route.params.id;
-    axios.get(`http://192.168.105.24:8080/data.php?id=${recordId}`)
+    axios.get(`${process.env.VUE_APP_API_URL}/data.php?id=${recordId}`)
       .then(response => {
         this.record = response.data;
         this.editedEmail = response.data.email;
@@ -46,7 +46,7 @@ export default {
   methods: {
     updateRecord() {
       if (this.editedEmail !== this.record.email) {
-        axios.post(`http://192.168.105.24:8080/update.php`, {
+        axios.post(`${process.env.VUE_APP_API_URL}/update.php`, {
           id: this.record.id,
           email: this.editedEmail
         })

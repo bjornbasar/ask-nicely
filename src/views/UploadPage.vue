@@ -52,7 +52,7 @@ export default {
       const formData = new FormData();
       formData.append('file', this.selectedFile);
 
-      axios.post(`http://192.168.105.24:8080/upload.php`, formData)
+      axios.post(`${process.env.VUE_APP_API_URL}/upload.php`, formData)
         .then(response => {
           console.log(response.data);
           this.$router.push('/list');

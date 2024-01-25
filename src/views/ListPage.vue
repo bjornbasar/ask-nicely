@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     loadData() {
-      axios.get(`http://192.168.105.24:8080/data.php`)
+      axios.get(`${process.env.VUE_APP_API_URL}/data.php`)
         .then(response => {
           // Handle success
           this.dataList = response.data;
