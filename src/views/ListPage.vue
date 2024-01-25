@@ -2,8 +2,9 @@
   <div>
     <h2>Data List</h2>
     <router-link to="/upload">
-      <button class="upload-button">Go to Upload Page</button>
+      <button class="upload-button">Upload</button>
     </router-link>
+    <p>Average Salary: {{ calculateAverageSalary() }}</p>
     <table class="data-table">
       <thead>
         <tr>
@@ -52,7 +53,16 @@ export default {
     },
     goToEditPage(recordId) {
       this.$router.push(`/edit/${recordId}`);
-    }
+    },
+    calculateAverageSalary() {
+      if (this.dataList.length === 0) {
+        return 0;
+      }
+
+      const totalSalary = this.dataList.reduce((acc, record) => acc + record.salary, 0);
+      const averageSalary = totalSalary / this.dataList.length;
+      return averageSalary.toFixed(2); 
+    },
   }
 };
 </script>
