@@ -1,26 +1,37 @@
 version: '3'
 services:
   php:
-    image: php:latest
+    build: ./backend
     volumes:
-      - ./php:/var/www/html
+      - ./backend:/var/www/html
     ports:
       - 8080:80
     env_file:
       - .env
+    depends_on:
+      - mysql
+    command: php -S 0.0.0.0:80 -t /var/www/html
+    networks:
+      - backend-network
 
   mysql:
     image: mysql:latest
     env_file:
       - .env
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - ./mysql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
+    networks:
+      - backend-network
   
   vue:
     build:
-      context: ./your-vue-app
+      context: ./
       dockerfile: Dockerfile
     ports:
       - 8081:80
+
+networks:
+  backend-network:
+    driver: bridge
