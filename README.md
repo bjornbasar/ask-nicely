@@ -1,35 +1,10 @@
 # ask-nicely
 
-This template should help get you started developing with Vue 3 in Vite.
+## How to run
+- Clone the repository
+- Navigate into the project directory
+- Simply run `docker compose up -d`
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+#### Notes:
+- I experienced an issue where the `build` for `vue` fails with "/app/dist not found" when triggered through `docker compose` and `docker build`, but it works when using `npm run build`
+-- after running `npm run build`, both `docker` commands start to work
