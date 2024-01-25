@@ -52,7 +52,7 @@ export default {
       const formData = new FormData();
       formData.append('file', this.selectedFile);
 
-      axios.post(`${process.env.VUE_APP_API_URL}/upload.php`, formData)
+      axios.post(`${import.meta.env.VITE_API_URL}/upload.php`, formData)
         .then(response => {
           console.log(response.data);
           this.$router.push('/list');

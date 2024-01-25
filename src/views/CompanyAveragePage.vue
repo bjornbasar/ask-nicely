@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     loadCompanyStats() {
-      axios.get(`${process.env.VUE_APP_API_URL}/company-stats.php`)
+      axios.get(`${import.meta.env.VITE_API_URL}/company-stats.php`)
         .then(response => {
           this.companyStats = response.data;
         })

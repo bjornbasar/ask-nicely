@@ -33,7 +33,7 @@ export default {
   },
   mounted() {
     const recordId = this.$route.params.id;
-    axios.get(`${process.env.VUE_APP_API_URL}/data.php?id=${recordId}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/data.php?id=${recordId}`)
       .then(response => {
         this.record = response.data;
         this.editedEmail = response.data.email;
@@ -46,7 +46,7 @@ export default {
   methods: {
     updateRecord() {
       if (this.editedEmail !== this.record.email) {
-        axios.post(`${process.env.VUE_APP_API_URL}/update.php`, {
+        axios.post(`${import.meta.env.VITE_API_URL}/update.php`, {
           id: this.record.id,
           email: this.editedEmail
         })
