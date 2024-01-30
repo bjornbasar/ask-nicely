@@ -14,4 +14,4 @@ RUN docker-php-ext-install pdo pdo_mysql
 EXPOSE 80
 
 # CMD to start PHP built-in server on container start
-CMD ["php", "-S", "0.0.0.0:80", "-t", "/var/www/html"]
+CMD ["php", "-S", "0.0.0.0:80", "-t", "/var/www/html/public"]

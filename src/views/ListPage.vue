@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     loadData() {
-      axios.get(`${import.meta.env.VITE_API_URL}/data.php`)
+      axios.get(`${import.meta.env.VITE_API_URL}/employees`)
         .then(response => {
           // Handle success
           this.dataList = response.data;
